@@ -1,0 +1,6 @@
+
+clicks 42449
+impressions 2295559
+average_age 29
+oldest 108
+click_through_rate 0.0184917921953

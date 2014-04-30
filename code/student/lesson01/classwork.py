@@ -31,3 +31,13 @@ print 'Impressions', impressions
 print 'Average Ages', average_age
 print 'Oldest', oldest
 print 'Click thorugh', click_through_rate
+
+file = open("newfile.txt", "w")
+
+file.write("\nclicks %s" % clicks)
+file.write("\nimpressions %s" % impressions)
+file.write("\naverage_age %s" % average_age)
+file.write("\noldest %s" % oldest)
+file.write("\nclick_through_rate %s" % click_through_rate)
+
+file.close()
