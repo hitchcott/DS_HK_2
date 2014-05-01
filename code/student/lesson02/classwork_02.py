@@ -31,10 +31,15 @@ print '\nvectorMatrix_multiplication(matrix, vector)\n', vectorMatrix_multiplica
 print '\nTrying to multiply with bad vector [2,3]'
 print vectorMatrix_multiplication(matrix, [2,3])
 
-  for i in range(len(matrix)):
-    for j in range(len(vector)):
-      matrix[i][j] = vector[j] * matrix[i][j]
-    matrix[i] = sum(matrix[i])
+def iMatrix(identity):
+  matrix = []
+  for i in range(identity):
+    matrix.append([])
+    for j in range(identity):
+      if i == j:
+        matrix[i].append(1)
+      else:
+        matrix[i].append(0)
   return matrix
 
-print vectorMatrix_multiplication(matrix, vector)
+print '\niMatrix(6)\n', iMatrix(6)
