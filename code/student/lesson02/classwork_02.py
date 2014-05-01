@@ -10,7 +10,11 @@ print 'vector', vector
 print 'matrix', matrix
 
 def matrix_multiplication(matrix, multiplier):
-  return [[cell * multiplier for cell in row] for row in matrix]
+  try:
+    return [[cell * multiplier for cell in row] for row in matrix]
+  except:
+    print 'matrix_multiplication calculation error'
+
 
 print '\nmatrix_multiplication(matrix, 5)\n', matrix_multiplication(matrix, 5)
 
@@ -23,13 +27,18 @@ def vectorMatrix_multiplication(matrix, vector):
       matrix[i] = sum(matrix[i])
     return matrix
   except:
-    print 'vectorMatrix_multiplication calculation eror.'
+    print 'vectorMatrix_multiplication calculation eror'
 
 print '\nvectorMatrix_multiplication(matrix, vector)\n', vectorMatrix_multiplication(matrix, vector)
 
 # use unittest eventually...
 print '\nTrying to multiply with bad vector [2,3]'
 print vectorMatrix_multiplication(matrix, [2,3])
+
+
+
+
+
 
 def iMatrix(identity):
   matrix = []
