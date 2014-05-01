@@ -1,7 +1,7 @@
 # coding=utf-8
 
 # 1. Clean up a the source
-# 2. Make a unique key string for each aggregation based on the requirements - age,gender,impressions
+# 2. Make a unique key string for each aggregation based on the requirements - age,gender,signed_in
 # 3. Reduce each line of the csv into that dictionary
 # 4. Run through the aggregation dictionary again to calcualte averages
 # 5. Output results to a new csv file
@@ -41,8 +41,8 @@ for line in lines:
 
   # Step 2.
 
-  # create an agg key using the format 'age,gender,impressions'
-  key = ','.join(split_line[0:3])
+  # create an agg key using the format 'age,gender,signed_in'
+  key = ','.join([split_line[headers['age']],split_line[headers['gender']],split_line[headers['signed_in']]])
   # convert the line to integers for math later on
   split_line = [int(i) for i in split_line]
 
