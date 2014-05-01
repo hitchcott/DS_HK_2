@@ -29,7 +29,7 @@ headers = {
 # Set up empty dictionary for the aggregation
 agg = {}
 
-# Step 0.
+# Step 1.
 
 # Parse the input csv file
 lines = open(inputPath).readlines()
@@ -39,7 +39,7 @@ for line in lines:
    # sanitize the list
   split_line = line.strip().split(',')
 
-  # Step 1.
+  # Step 2.
 
   # create an agg key using the format 'age,gender,impressions'
   key = ','.join(split_line[0:3])
