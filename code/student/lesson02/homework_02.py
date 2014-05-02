@@ -85,8 +85,8 @@ for line in lines:
 
 # Calcualte the average clicks & impressions for each agg
 for i in agg:
-  agg[i]['clicks']['average'] = agg[i]['clicks']['combined'] / agg[i]['count']
-  agg[i]['impressions']['average'] = agg[i]['impressions']['combined'] / agg[i]['count']
+  agg[i]['clicks']['average'] = agg[i]['clicks']['combined'] / float(agg[i]['count'])
+  agg[i]['impressions']['average'] = agg[i]['impressions']['combined'] / float(agg[i]['count'])
 
 # Step 5.
 
