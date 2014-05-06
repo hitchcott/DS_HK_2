@@ -1,13 +1,28 @@
+# coding=utf-8
+
 vector = [2,3,6,5]
 matrix = [
   [1,3,9,2],
   [2,4,6,8]
 ]
 
+matrixA = [
+  [1,3,9,2],
+  [2,4,6,8]
+]
+matrixB = [
+  [2,1],
+  [3,2],
+  [6,0],
+  [5,4]
+]
 
 
 print 'vector', vector
 print 'matrix', matrix
+print 'matrixA', matrixA
+print 'matrixB', matrixB
+
 
 def matrix_multiplication(matrix, multiplier):
   try:
@@ -33,10 +48,31 @@ print '\nvectorMatrix_multiplication(matrix, vector)\n', vectorMatrix_multiplica
 
 # use unittest eventually...
 print '\nTrying to multiply with bad vector [2,3]'
-print vectorMatrix_multiplication(matrix, [2,3])
+vectorMatrix_multiplication(matrix, [2,3])
 
+# add matrix matrix multiplication
 
+def matrixMatrix_multiplication(matrix1, matrix2):
+  # times the
 
+  if len(matrix1[0]) == len(matrix2):
+    print 'The new matrix will be ', len(matrix1), 'x' , len(matrix2[0])
+
+    result = [[0 for col in range(len(matrix1))] for row in range(len(matrix2[0]))]
+    for i in range(len(matrix1)):
+      for j in range(len(matrix2[0])):
+        cell = []
+        # cell = []
+        for k in range(len(matrix1[0])):
+          print 'i, j, k', i, j, k
+          cell.append(matrix1[i][k] * matrix2[k][j])
+        print 'cell is', cell
+        result[i][j] = sum(cell)
+
+    print 'Result:'
+    return result
+
+print '\nmatrixMatrix_multiplication(matrixA,matrixB)\n', matrixMatrix_multiplication(matrixA,matrixB)
 
 
 
