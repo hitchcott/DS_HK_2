@@ -17,13 +17,24 @@ def getFile(filePath):
     output.write(csvFile.read())
     output.close()
 
+frame = pd.DataFrame()
+# for year in years:
+#     path ='C:\\Documents and Settings\\Foo\\My Documents\\pydata-book\\pydata-book-master`\\ch02\\names\\yob%d.txt' % year
+#     frame = pd.read_csv(path, names=columns)
 
+#     frame['year'] = year
+#     names = names.append(frame, ignore_index=True)
 
 for i in range(1,csvFileCount):
   filePath = '../../../data/nyt'+str(i)+'.csv'
-  getFile(filePath)
+  print 'reading', filePath
+
+  thisFrame = pd.read_csv(filePath)
+
+  frame = frame.append(thisFrame, ignore_index=True)
   # pd.read_csv
 
+print frame.describe()
 
 # load the data into the frame
 
