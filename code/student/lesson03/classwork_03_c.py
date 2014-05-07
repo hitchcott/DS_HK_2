@@ -6,13 +6,13 @@ import numpy as np
 df = pd.read_csv('../../../data/nytimes.csv')
 
 # data itself
-#print df
+# print df
 
 # sumamry
-#print df.describe()
+print df.describe()
 
 # head
-#print df[:10]
+print df[:10]
 
 # aggregate
 dfg = df[ ['Age', 'Impressions', 'Clicks'] ].groupby(['Age']).agg([np.mean])
