@@ -46,17 +46,17 @@ if not os.path.isfile(concatPath):
 
 # GO PANDAS!
 df = pd.read_csv(concatPath)
-#print df.describe()
-#df.hist(figsize=(18,12))
-#plt.show()
-# print df.dtypes
 
-x = linspace(-15,15,100) # 100 linearly spaced numbers
-y = sin(x)/x # computing the values of sin(x)/x
+dfg = df[ ['Age', 'Impressions', 'Clicks'] ].groupby(['Age']).agg([np.mean])
 
-# compose plot
-fig = plt.figure(figsize=(18, 8), dpi=300)
-plt.plot(x,y) # sin(x)/x
-plt.plot(x,y,'co') # same function with cyan dots
-plt.plot(x,2*y,x,3*y) # 2*sin(x)/x and 3*sin(x)/x
-plt.show() # show the plot
+
+
+# x = linspace(-15,15,100) # 100 linearly spaced numbers
+# y = sin(x)/x # computing the values of sin(x)/x
+
+# # compose plot
+# fig = plt.figure(figsize=(18, 8), dpi=300)
+# plt.plot(x,y) # sin(x)/x
+# plt.plot(x,y,'co') # same function with cyan dots
+# plt.plot(x,2*y,x,3*y) # 2*sin(x)/x and 3*sin(x)/x
+# plt.show() # show the plot
