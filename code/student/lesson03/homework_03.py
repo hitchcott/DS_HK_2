@@ -1,10 +1,13 @@
 # coding=utf8
 
 import pandas as pd
-import numpy as np
+from numpy import *
 import os
 import urllib2
+import matplotlib.pyplot as plt
+import csv
 
+concatPath = '../../../data/nytConcat.csv'
 csvFileCount = 31 # number of CSV files + 1
 
 # if the data doesn't exist, download it -- should only happen first time this is run
@@ -17,25 +20,43 @@ def getFile(filePath):
     output.write(csvFile.read())
     output.close()
 
-frame = pd.DataFrame()
-# for year in years:
-#     path ='C:\\Documents and Settings\\Foo\\My Documents\\pydata-book\\pydata-book-master`\\ch02\\names\\yob%d.txt' % year
-#     frame = pd.read_csv(path, names=columns)
 
-#     frame['year'] = year
-#     names = names.append(frame, ignore_index=True)
+# concat the CSV files
+if not os.path.isfile(concatPath):
+  print 'Concat file doesnt exist, lets make it'
+  for i in range(1,csvFileCount):
+    filePath = '../../../data/nyt'+str(i)+'.csv'
+    getFile(filePath)
+    fout=open(concatPath,"a")
+    f = open(filePath)
 
-for i in range(1,csvFileCount):
-  filePath = '../../../data/nyt'+str(i)+'.csv'
-  print 'reading', filePath
+    # first file:
+    if i is 1:
+      for line in f:
+        fout.write(line)
 
-  thisFrame = pd.read_csv(filePath)
+    else:
+      # now the rest:
+      f.next() # skip the header
+      for line in f:
+        fout.write(line)
+      f.close() # not really needed
 
-  frame = frame.append(thisFrame, ignore_index=True)
-  # pd.read_csv
+    fout.close()
 
-print frame.describe()
+# GO PANDAS!
+df = pd.read_csv(concatPath)
+#print df.describe()
+#df.hist(figsize=(18,12))
+#plt.show()
+# print df.dtypes
 
-# load the data into the frame
+x = linspace(-15,15,100) # 100 linearly spaced numbers
+y = sin(x)/x # computing the values of sin(x)/x
 
-
+# compose plot
+fig = plt.figure(figsize=(18, 8), dpi=300)
+plt.plot(x,y) # sin(x)/x
+plt.plot(x,y,'co') # same function with cyan dots
+plt.plot(x,2*y,x,3*y) # 2*sin(x)/x and 3*sin(x)/x
+plt.show() # show the plot
